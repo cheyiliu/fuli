@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="tab_titles">
+    <string-array name="tab_page_titles">
         <item>mm1</item>
         <item>mm2</item>
-        <item>mm31</item>
-        <item>mm32</item>
-        <item>mm33</item>
-        <item>mm35</item>
+        <item>mm3</item>
     </string-array>
 </resources>

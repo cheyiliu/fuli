@@ -1,4 +1,4 @@
-package com.study.fuli;
+package com.study.fuli.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.study.fuli.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class MainViewPagerAdapter extends FragmentPagerAdapter {
-        private String[] mTitles = getResources().getStringArray(R.array.tab_titles);
+        private String[] mTitles = getResources().getStringArray(R.array.tab_page_titles);
 
         public MainViewPagerAdapter() {
             super(getSupportFragmentManager());
@@ -37,7 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return new PageFragment();
+            if (0 == position) {
+                return new FragPageStockings();
+            } else if (1 == position) {
+                return new FragPageButt();
+            } else {
+                return new FragPageChest();
+            }
         }
 
         @Override
