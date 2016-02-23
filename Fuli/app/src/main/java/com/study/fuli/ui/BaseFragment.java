@@ -11,6 +11,8 @@ import android.widget.ListView;
 
 import com.study.fuli.R;
 
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * Created by hsy on 2016/2/22.
  */
@@ -25,5 +27,17 @@ public class BaseFragment extends Fragment {
         mSRLayout = (SwipeRefreshLayout) root.findViewById(R.id.swiperefresh);
         mListView = (ListView) root.findViewById(R.id.list);
         return root;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
     }
 }
