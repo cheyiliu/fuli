@@ -1,8 +1,8 @@
 package com.study.fuli.model;
 
 /**
- * Created by hsy on 2016/2/22.
+ * Created by hsy on 2016/2/26.
  */
-public class BaseImage {
+public class Image {
     public String mUrl;
 }

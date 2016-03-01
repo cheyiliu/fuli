@@ -2,7 +2,7 @@ package com.study.fuli.data;
 
 import com.study.fuli.data.remote.ApiUrl;
 import com.study.fuli.data.remote.Utils;
-import com.study.fuli.model.ModelButt;
+import com.study.fuli.event.EventButtGirlGot;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -13,7 +13,6 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -43,7 +42,7 @@ public class DataManager {
             @Override
             public void onFailure(Call call, IOException e) {
                 // just post an empty result
-                ArrayList<ModelButt> result = new ArrayList<ModelButt>();
+                ArrayList<EventButtGirlGot> result = new ArrayList<EventButtGirlGot>();
                 EventBus.getDefault().post(result);
             }
 
@@ -51,13 +50,9 @@ public class DataManager {
             public void onResponse(Call call, Response response) throws IOException {
                 String responseContent = response.body().string();
                 ArrayList<String> buttGirlsUrls = Utils.parseWebPageImageUrl(responseContent);
-                ArrayList<ModelButt> result = new ArrayList<ModelButt>();
-                for (String url : buttGirlsUrls) {
-                    ModelButt butt = new ModelButt();
-                    butt.mUrl = url;
-                    result.add(butt);
-                }
-                EventBus.getDefault().post(result);
+                EventButtGirlGot eventButtGirlGot = new EventButtGirlGot();
+                eventButtGirlGot.mPayload = buttGirlsUrls;
+                EventBus.getDefault().post(eventButtGirlGot);
             }
         });
     }

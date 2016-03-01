@@ -6,7 +6,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by hsy on 2016/2/22.
